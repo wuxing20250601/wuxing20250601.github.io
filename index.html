@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6种纯CSS超酷按钮发光特效|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/demo.css">
+</head>
+
+<body class="light">
+
+    <div class="container">
+        <main id="app" class="dark">
+
+            <button class="" style="margin-top: 300px;" data-effect="flicker">
+                <span class="text">KeiXin Liu!  Happy Childrens Day!</span>
+                <span class="shimmer"></span>
+            </button>
+
+            <section class="selection">
+                <label><input type="radio" name="style" value="spin" /> spin</label>
+                <label><input type="radio" name="style" value="wipe" /> wipe</label>
+                <label><input type="radio" name="style" value="flicker" checked /> flicker</label>
+                <label><input type="radio" name="style" value="wave" /> wave</label>
+                <!-- <label><input type="radio" name="style" value="throb" /> throb</label>
+                <label><input type="radio" name="style" value="pulse" /> pulse</label> -->
+            </section>
+
+        </main>
+        <div style="text-align: center;color: aliceblue; margin-top: 300px;">点击下方小点可改变显示模式</div>
+    </div>
+
+    
+
+    <script>
+        let btn = document.querySelector("button");
+        let radios = document.querySelectorAll("[type=radio]");
+
+        radios[Math.floor(Math.random() * radios.length)].checked = true;
+
+        radios.forEach(r => {
+            r.onchange = e => {
+                btn.dataset.effect = e.currentTarget.value;
+                btn.classList.remove('textShine');
+                window.requestAnimationFrame(() => {
+                    btn.classList.add('textShine');
+                });
+            };
+            if (r.checked) {
+                btn.dataset.effect = r.value;
+            }
+        });
+
+    </script>
+</body>
+
+</html>
